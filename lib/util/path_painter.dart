@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:vision_code/util/app_colors.dart';
 
 class PathPainter extends CustomPainter {
   Path path;
+  final Color? pathColor;
 
-  PathPainter(this.path);
+  PathPainter(this.path, {this.pathColor});
 
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = Colors.redAccent.withOpacity(0.3)
+      ..color = pathColor ?? AppColors.defaultCircleColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.0;
+      ..strokeWidth = 1.0;
 
     canvas.drawPath(path, paint);
   }

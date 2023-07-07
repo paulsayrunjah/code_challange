@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vision_code/ui/common/animated_circle_view.dart';
+import 'package:vision_code/util/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,21 +12,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
+        backgroundColor: AppColors.appBgColor,
         appBar: AppBar(
           title: const Text('Demo app'),
         ),
-        body: const Center(
+        body: Center(
           child: Stack(
+            fit: StackFit.loose,
             children: [
               AnimatedCircleView(
-                circleOneSize: 10,
+                circleOneColor: Colors.green.shade900,
+                circleTwoColor: Colors.yellow,
               ),
-              AnimatedCircleView(
+              const AnimatedCircleView(
                 radius: 150,
-                circleOneColor: Colors.blue,
-                circleOneSize: 14,
+                circleOneColor: Colors.white,
+                circleOneSize: 12,
                 circleTwoColor: Colors.red,
-                circleTwoSize: 50.0,
+                circleTwoSize: 18.0,
                 durationDelayForCircleOne: 6000,
                 durationDelayForCircleTwo: 4000,
               ),

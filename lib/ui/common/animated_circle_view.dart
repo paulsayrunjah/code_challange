@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vision_code/ui/common/circular_view.dart';
 import 'package:vision_code/util/app_utils.dart';
 import 'package:vision_code/util/path_painter.dart';
 
@@ -13,6 +14,7 @@ class AnimatedCircleView extends StatefulWidget {
       this.circleTwoColor,
       this.circleOneSize,
       this.circleTwoSize,
+      this.pathColor,
       super.key});
 
   final double? top;
@@ -27,6 +29,8 @@ class AnimatedCircleView extends StatefulWidget {
 
   final Color? circleOneColor;
   final Color? circleTwoColor;
+
+  final Color? pathColor;
 
   @override
   State<AnimatedCircleView> createState() => _AnimatedCircleViewState();
@@ -77,7 +81,7 @@ class _AnimatedCircleViewState extends State<AnimatedCircleView>
           top: top,
           left: left,
           child: CustomPaint(
-            painter: PathPainter(_path),
+            painter: PathPainter(_path, pathColor: widget.pathColor),
           ),
         ),
         Positioned(
@@ -110,26 +114,3 @@ class _AnimatedCircleViewState extends State<AnimatedCircleView>
 }
 
 enum Position { top, left }
-
-class CircularView extends StatelessWidget {
-  const CircularView({
-    super.key,
-    required this.size,
-    required this.color,
-  });
-
-  final double size;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-      ),
-      width: size,
-      height: size,
-    );
-  }
-}
